@@ -1,8 +1,10 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
+const MONGO_URL = process.env.MONGODB_URI
+
 const connect = () => {
-    mongoose.connect(process.env.DATABASE_URL,
+    mongoose.connect(MONGO_URL,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -15,5 +17,5 @@ const connect = () => {
             console.log("Algo deu errado para conectar no MongoDB Atlas!");
             console.error(error);
         })
-}
+    }
 module.exports = { connect }
