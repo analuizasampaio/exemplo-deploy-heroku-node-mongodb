@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 
-const db = require("./src/data/dataConfig")
+const db = require("./data/dataConfig")
 db.connect()
 
 const app = express()

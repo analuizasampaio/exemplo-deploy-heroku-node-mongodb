@@ -12,7 +12,7 @@ const connect = () => {
             console.log("Conectadissimas no MongoDB Atlas!")
         })
         .catch((error) => {
-            console.log("Unable to connect to MongoDB Atlas!");
+            console.log("Algo deu errado para conectar no MongoDB Atlas!");
             console.error(error);
         })
 }
