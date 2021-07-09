@@ -1,10 +1,20 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-const connect =  () => {mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+const MONGO_URL = process.env.MONGODB_URI
+
+const connect = () => {
+    mongoose.connect(MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(()=>{
+        console.log("Conectadas bb no MongoDb Atlas")
+    })
+    .catch((error)=>{
+        console.log("Algo deu errado")
+        console.error(error)
+    })
 }
-).then(console.log('Database connected')).catch(err => console.err)}
 
 module.exports = { connect }
