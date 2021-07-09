@@ -14,12 +14,6 @@ const create =  async (req,res) => {
         descricao: req.body.descricao,
         criadoEm: req.body.criadoEm
     })
-
-    const filmeJaExiste = await filme.findOne({nome: req.body.nome})
-
-    if (filmeJaExiste) {
-        return res.status(400).json({error: 'Filme já cadastrado.'})
-    }
     try { 
         const novoFilme = await filme.save()
         res.status(201).json(novoFilme)
