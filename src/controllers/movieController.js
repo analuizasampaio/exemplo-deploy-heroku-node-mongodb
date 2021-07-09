@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
-const filme = require('../models/movieSchema')
+const movieSchema = require('../models/movieSchema')
 
 const getAll = async (req, res) => {
-    const filmes = await filme.find().populate('movie') //eager loading
+    const filmes = await movieSchema.find().populate('movie') //eager loading
     res.json(filmes)
 }
 
 const create =  async (req,res) => {
-    const filme = new filme({
+    const filme = new movieSchema({
         _id: new mongoose.Types.ObjectId(),
         nome: req.body.nome,
         genero: req.body.genero,
@@ -24,7 +24,7 @@ const create =  async (req,res) => {
 
 const getById = async (req, res) => {
     try {
-        const filme = await filme.findById(req.params.id)
+        const filme = await movieSchema.findById(req.params.id)
         if(filme == null) {
             return res.status(404).json({message: 'filme nao encontrado'})
         }
@@ -37,7 +37,7 @@ const getById = async (req, res) => {
 
 const updateMovie = async (req, res) => {
     try {
-        const filme = await filme.findById(req.params.id)
+        const filme = await movieSchema.findById(req.params.id)
         if(filme == null) {
             return res.status(404).json({message: 'filme nao encontrado'})
         }
@@ -65,7 +65,7 @@ const updateMovie = async (req, res) => {
 
 const deleteMovie = async (req, res) => {
     try{    
-        const filme = await filme.findById(req.params.id)
+        const filme = await movieSchema.findById(req.params.id)
         if(filme == null) {
             return res.status(404).json({message: 'filme nao encontrado'})
         }
